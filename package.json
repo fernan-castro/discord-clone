@@ -9,18 +9,27 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.38.1",
+    "ajv": "^8.18.0",
+    "minimatch": "^10.2.2",
     "next": "16.1.6",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "stream-chat": "^9.35.1",
+    "stream-chat-react": "^13.14.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.1.6",
-    "tailwindcss": "^4",
+    "eslint": "^9.20.0",
+    "eslint-config-next": "^16.1.6",
+    "tailwindcss": "^4.2.0",
     "typescript": "^5"
+  },
+  "overrides": {
+    "ajv": "^8.18.0",
+    "minimatch": "^10.2.2"
   }
 }
