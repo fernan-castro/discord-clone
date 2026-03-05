@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
 
   // 2. Replace 'your-repo-name' with your actual GitHub repository name
   // This ensures your CSS/JS loads from /repo-name/ instead of /
-  basePath: '/your-repo-name',
+  basePath: '/discord-clone',
 
   // 3. Required for static sites if you use the Next.js <Image /> component
   images: {
