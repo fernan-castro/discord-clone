@@ -1,10 +1,25 @@
 'use client';
 
-import { createContext, useContext, useState } from 'react';
+import { createContext, useCallback, useContext, useState } from 'react';
+import { StreamChat } from 'stream-chat';
+import { v4 as uuidv4 } from 'uuid';
 
-type DiscordState = {};
+type DiscordState = {
+    server?: DiscordServer;
+    changeServer: (server: DiscordServer | undefined, client: StreamChat) => void;
+    createServer: (
+        client: StreamChat,
+        name: string,
+        imageUrl: string,
+        userIds: string[]
+    ) => void;
+};
 
-const initialValue: DiscordState = {};
+const initialValue: DiscordState = {
+    server: undefined,
+    changeServer: () => {},
+    createServer: () => {},
+};
 
 const DiscordContext = createContext<DiscordState>(initialValue);
 
@@ -15,7 +30,49 @@ export const DiscordContextProvider: any = ({
 }) => {
     const [myState, setMyState] = useState<DiscordState>(initialValue);
 
-    const store: DiscordState = {};
+    const changeServer = useCallback(
+        async (server: DiscordServer | undefined, client: StreamChat) => {
+            setMyState((myState) => {
+                return {...myState, server};
+            });
+        }, [setMyState]
+    );
+
+    const createServer = useCallback (
+        async (
+            client: StreamChat,
+            name: string,
+            imageUrl: string,
+            userIds: string[]
+        ) => {
+            const serverId = uuidv4()
+
+            const channelData = {
+                name: "Welcome",
+                members: userIds,
+                data: {
+                    image: imageUrl,
+                    serverId: serverId,
+                    server: name,
+                    category: "Text Channels",
+                },
+            }
+            const messagingChannel = client.channel("messaging", uuidv4(), channelData);
+
+            try {
+                const response = await messagingChannel.create();
+                console.log("[DiscordContext - createServer] Response: ", response);
+            } catch (err) {
+                console.error(err)
+            }
+        }, []
+    );
+
+    const store: DiscordState = {
+        server: myState.server,
+        changeServer: changeServer,
+        createServer: createServer,
+    };
 
     return (
         <DiscordContext.Provider value={store}>{children}</DiscordContext.Provider>
