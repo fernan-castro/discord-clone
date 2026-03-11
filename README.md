@@ -1,3 +1,37 @@
+#TODO (frontend)
+- [ ] home/welcome page
+- [ ] sign in buttons
+- [ ] general app page
+
+
+
+#TODO (backend)
+- [ ] usernames and show them instead of emails
+- [ ] text channels
+- [ ] voice and video channels
+- [ ] finish servers buttons (settings, etc.)
+- [ ] check limits on storage, connections, users, etc.
+
+
+#TODO (vercel)
+- [ ] turn on analytics
+
+#TODO (security)
+- [ ] (not yet defined)
+
+
+#TODO 
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -34,3 +68,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
